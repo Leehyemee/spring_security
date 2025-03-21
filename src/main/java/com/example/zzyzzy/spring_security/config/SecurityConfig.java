@@ -33,7 +33,7 @@ public class SecurityConfig {
                 .antMatchers("/user/**").hasRole("USER") // USER 권한 사용자만 접근 가능
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/logout").authenticated() // 인증 받은 사용자만 접근 가능
-                .antMatchers("/**", "/member/login").permitAll() // 인증/인가 여부와 상관없이 접근 가능
+                .antMatchers("/**", "/member/**").permitAll() // 인증/인가 여부와 상관없이 접근 가능
                 .and()
             .formLogin()  // form login 인증 사용
                 .loginPage("/member/login") // 커스텀 로그인 페이지 경로
