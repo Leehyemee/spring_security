@@ -30,7 +30,7 @@ public class SecurityConfig {
                 .antMatchers("/logout").authenticated() // 인증 받은 사용자만 접근 가능
                 .antMatchers("/**").permitAll() // 인증/인가 여부와 상관없이 접근 가능
                 .and()
-            .formLogin()  // form login 인증 사용
+            .formLogin()  // form login 인증 사용 -- 여기 수정
                 .and()
             .logout()// 로그아웃 설정
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout")) // 로그아웃 URL 지정
