@@ -33,12 +33,12 @@ public class SecurityConfig {
                 .antMatchers("/user/**").hasRole("USER") // USER 권한 사용자만 접근 가능
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/logout").authenticated() // 인증 받은 사용자만 접근 가능
-                .antMatchers("/**").permitAll() // 인증/인가 여부와 상관없이 접근 가능
+                .antMatchers("/**", "/member/login").permitAll() // 인증/인가 여부와 상관없이 접근 가능
                 .and()
             .formLogin()  // form login 인증 사용
-                .loginProcessingUrl("/api/login") // 로그인 처리 URL
-                .usernameParameter("username") // 아이디 매개변수 지정
-                .passwordParameter("password") // 비밀번호 매개변수 지정
+                .loginPage("/member/login") // 커스텀 로그인 페이지 경로
+                .usernameParameter("userid") // 아이디 매개변수 지정
+                .passwordParameter("userpwd") // 비밀번호 매개변수 지정
                 .defaultSuccessUrl("/") // 로그인 성공 시 리다이렉트 URL
                 .failureUrl("/login?error=true") // 로그인 실패 시 리다이렉트 URL
                 .permitAll()
