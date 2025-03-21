@@ -10,7 +10,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "users2")
+@Table(name = "users3")
 @Data @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -32,7 +32,9 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
-    // insert, update시 해당 컬럼 제외
+    @Column(nullable = false)
+    private String role;
+
     @CreationTimestamp
     private LocalDateTime regdate;
 }

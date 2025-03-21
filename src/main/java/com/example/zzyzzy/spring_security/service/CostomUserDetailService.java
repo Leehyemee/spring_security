@@ -26,7 +26,7 @@ public class CostomUserDetailService implements UserDetailsService {
         return org.springframework.security.core.userdetails.User.builder()
                 .username(user.getUserid())
                 .password(user.getUserpwd())
-                .roles("USER")
+                .roles(user.getRole())
                 .build();
     }
 }
