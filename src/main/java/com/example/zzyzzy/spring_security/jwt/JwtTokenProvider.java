@@ -14,7 +14,7 @@ public class JwtTokenProvider {
     @Value("${jwt.secretKey}")
     private String secretKey;
 
-    @Value("${jwt.validityKey}")
+    @Value("${jwt.validity}")
     private long validity;
 
     // 주어진 username을 기반으로 새로운 jwt 생성
