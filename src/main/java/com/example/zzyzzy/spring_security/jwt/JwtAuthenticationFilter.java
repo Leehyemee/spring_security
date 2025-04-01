@@ -69,6 +69,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             SecurityContextHolder.getContext().getAuthentication() == null) {
 
             // 추출된 username을 이용해서 사용자 정보를 디비에서 조회
+            log.info(">> JwtAuthenticationFilter - loadUserByUsername 호출!!");
             UserDetails userDetails =
                     userDetailsService.loadUserByUsername(username);
 

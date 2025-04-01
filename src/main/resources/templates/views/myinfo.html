@@ -11,7 +11,8 @@
   <main id="content">
     <h2>회원정보</h2>
     <p sec:authorize="isAnonymous()">로그인</p>
-    <p sec:authorize="isAuthenticated()">로그아웃</p>
+    <p sec:authorize="isAuthenticated()">
+      <a href="/member/logout">로그아웃</a></p>
 
     <div id="myinfo">
       <table class="table table-bordered mb-0">

@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @Slf4j
 @Controller
@@ -63,8 +65,6 @@ public class UserController {
         }
     }
 
-
-
     @GetMapping("/myinfo")
     public String myinfo(Authentication authentication, Model model) {
         String returnUrl = "redirect:/member/login";
@@ -77,6 +77,22 @@ public class UserController {
             returnUrl = "views/myinfo";
         }
         //return returnUrl;
-        return "views/myinfo";
+        return returnUrl;
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest req, HttpServletResponse res) {
+        // 쿠키에서 JWT 삭제
+        Cookie cookie = new Cookie("jwt", null);
+        cookie.setMaxAge(0);
+        cookie.setPath("/");
+        res.addCookie(cookie);
+
+        // 세션 무효화
+        HttpSession session = req.getSession(false);
+        if (session != null) {
+            session.invalidate();
+        }
+        return "redirect:/";
     }
 }
